@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopTrend - Premium E-Commerce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            height: 80vh;
+            position: relative;
+            overflow: hidden;
+            background: #2d2d2d;
+        }
+        .hero-carousel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: opacity 1s ease-in-out;
+        }
+        .hero-carousel.active {
+            opacity: 1;
+        }
+        .hero-carousel {
+            opacity: 0;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(40, 40, 40, 0.5));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            text-align: center;
+        }
+        .hero-text {
+            animation: slideIn 1s ease-out;
+            font-family: 'Playfair Display', serif;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .hero-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+        .hero-nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .hero-nav-left { left: 20px; }
+        .hero-nav-right { right: 20px; }
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 10s infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+        .footer-link:hover {
+            color: #a0a0a0;
+        }
+    </style>
+</head>
+<body class="bg-[#1a1a1a] font-sans">
+    <!-- Navbar -->
+    <nav class="bg-[#000000] shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-extrabold text-[#a0a0a0] tracking-tight">ShopTrend</a>
+            <div class="flex items-center space-x-8">
+                <a href="index.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium">Home</a>
+                <a href="about.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium">About Us</a>
+                <a href="categories.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium">Categories</a>
+                <a href="feedback.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium">Feedback</a>
+                <a href="contact.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium">Contact</a>
+                <a href="cart.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium relative">
+                    Cart
+                    <span id="cartCount" class="absolute -top-2 -right-2 bg-[#a0a0a0] text-[#000000] text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </a>
+                <a href="wishlist.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium relative">
+                    Wishlist
+                    <span id="wishlistCount" class="absolute -top-2 -right-2 bg-[#ff6b6b] text-[#000000] text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </a>
+            </div>
+            <div class="flex items-center space-x-6">
+                <div class="relative">
+                    <input type="text" id="searchBar" class="pl-10 pr-4 py-2 border border-[#a0a0a0] rounded-full focus:outline-none focus:ring-2 focus:ring-[#a0a0a0] bg-[#333333] text-[#d1d5db]" placeholder="Search products...">
+                    <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-[#a0a0a0]"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="particles" id="particles"></div>
+        <div class="hero-carousel active" style="background-image: url('https://images.unsplash.com/photo-1551488831-00ddcb6c0a5a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3');"></div>
+        <div class="hero-carousel" style="background-image: url('https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3');"></div>
+        <div class="hero-carousel" style="background-image: url('https://images.unsplash.com/photo-1572863141406-8d7e9e9b8e5a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3');"></div>
+        <div class="hero-overlay">
+            <div class="hero-text">
+                <h1 class="text-5xl md:text-7xl font-bold mb-4 drop-shadow-2xl tracking-wide">Elevate Your Fashion with ShopTrend</h1>
+                <p class="text-xl md:text-2xl mb-6 drop-shadow-md italic">Luxury Collections for Every Soul</p>
+                <div class="space-x-4">
+                    <a href="categories.html" class="bg-[#a0a0a0] text-[#000000] px-8 py-4 rounded-full hover:bg-[#b0b0b0] transition text-lg font-semibold shadow-xl">Shop Now</a>
+                    <a href="about.html" class="border-2 border-[#ffffff] text-[#ffffff] px-8 py-4 rounded-full hover:bg-[#ffffff] hover:text-[#000000] transition text-lg font-semibold">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-nav hero-nav-left" id="heroPrev"><i class="fas fa-chevron-left"></i></div>
+        <div class="hero-nav hero-nav-right" id="heroNext"><i class="fas fa-chevron-right"></i></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#000000] text-[#d1d5db] py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Brand Info -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-[#ffffff]">ShopTrend</h3>
+                    <p class="text-[#d1d5db] mb-4">Your ultimate destination for premium fashion. Explore the latest trends and elevate your style with us.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-[#d1d5db] hover:text-[#a0a0a0]"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-[#d1d5db] hover:text-[#a0a0a0]"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-[#d1d5db] hover:text-[#a0a0a0]"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-[#ffffff]">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link text-[#d1d5db]">Home</a></li>
+                        <li><a href="about.html" class="footer-link text-[#d1d5db]">About Us</a></li>
+                        <li><a href="categories.html" class="footer-link text-[#d1d5db]">Categories</a></li>
+                        <li><a href="contact.html" class="footer-link text-[#d1d5db]">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-[#ffffff]">Contact Us</h3>
+                    <ul class="space-y-2 text-[#d1d5db]">
+                        <li><i class="fas fa-envelope mr-2"></i>support@shoptrend.com</li>
+                        <li><i class="fas fa-phone mr-2"></i>+91 123-456-7890</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>123 Fashion Street, Mumbai, India</li>
+                    </ul>
+                </div>
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-[#ffffff]">Stay Updated</h3>
+                    <p class="text-[#d1d5db] mb-4">Subscribe to our newsletter for the latest updates and offers.</p>
+                    <div class="flex">
+                        <input type="email" id="newsletterEmail" class="w-full p-2 rounded-l-md bg-[#333333] text-[#d1d5db] border-none focus:outline-none focus:ring-2 focus:ring-[#a0a0a0]" placeholder="Your Email">
+                        <button id="subscribeBtn" class="bg-[#a0a0a0] text-[#000000] px-4 py-2 rounded-r-md hover:bg-[#b0b0b0] transition">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-[#a0a0a0] mt-8 pt-6 text-center">
+                <p class="text-[#d1d5db]">© 2025 ShopTrend. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="common.js"></script>
+    <script>
+        // Hero Carousel
+        let currentSlide = 0;
+        const heroSlides = document.querySelectorAll('.hero-carousel');
+        function showHeroSlide(index) {
+            heroSlides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+        function autoSlide() {
+            currentSlide = (currentSlide + 1) % heroSlides.length;
+            showHeroSlide(currentSlide);
+        }
+        let slideInterval = setInterval(autoSlide, 5000);
+
+        document.getElementById('heroPrev').addEventListener('click', () => {
+            clearInterval(slideInterval);
+            currentSlide = (currentSlide - 1 + heroSlides.length) % heroSlides.length;
+            showHeroSlide(currentSlide);
+            slideInterval = setInterval(autoSlide, 5000);
+        });
+        document.getElementById('heroNext').addEventListener('click', () => {
+            clearInterval(slideInterval);
+            currentSlide = (currentSlide + 1) % heroSlides.length;
+            showHeroSlide(currentSlide);
+            slideInterval = setInterval(autoSlide, 5000);
+        });
+
+        // Particles Effect
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.animationDelay = `${Math.random() * 10}s`;
+            particlesContainer.appendChild(particle);
+        }
+
+        // Newsletter Subscription
+        document.getElementById('subscribeBtn').addEventListener('click', () => {
+            const email = document.getElementById('newsletterEmail').value;
+            if (email) {
+                alert('Thank you for subscribing!');
+                document.getElementById('newsletterEmail').value = '';
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        });
+
+        // Update cart and wishlist counts on page load
+        document.getElementById('cartCount').textContent = cart.length;
+        document.getElementById('wishlistCount').textContent = wishlist.length;
+    </script>
+</body>
+</html>

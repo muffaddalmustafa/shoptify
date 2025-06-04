@@ -1,0 +1,49 @@
+/* Background and container colors */
+body.bg-dark {
+  background-color: #1a1a1a; /* almost black */
+}
+
+.bg-box {
+  background-color: #2a2a2a; /* dark grey box */
+}
+
+/* Input fields */
+.input-field {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #3a3a3a;
+  color: white;
+  border: 1px solid #555;
+  outline: none;
+}
+
+.input-field::placeholder {
+  color: #888;
+}
+
+/* Submit button */
+.submit-btn {
+  width: 100%;
+  background-color: #444;
+  padding: 0.5rem;
+  color: white;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: 1px solid #666;
+  transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: #555;
+}
+
+/* Links */
+.link {
+  color: #ccc;
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: #fff;
+}

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - ShopTrend</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .contact-form-container {
+            background: #000000;
+            border: 2px solid #a0a0a0;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.05);
+        }
+        .contact-input, .contact-textarea {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        .contact-input input, .contact-textarea textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #a0a0a0;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #d1d5db;
+            background: #333333;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-input input:focus, .contact-textarea textarea:focus {
+            border-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(160, 160, 160, 0.1);
+            outline: none;
+        }
+        .contact-label {
+            position: absolute;
+            top: 12px;
+            left: 16px;
+            font-size: 1rem;
+            color: #a0a0a0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        .contact-input input:focus + .contact-label,
+        .contact-input input:not(:placeholder-shown) + .contact-label,
+        .contact-textarea textarea:focus + .contact-label,
+        .contact-textarea textarea:not(:placeholder-shown) + .contact-label {
+            top: -10px;
+            left: 12px;
+            font-size: 0.85rem;
+            color: #ffffff;
+            background: #000000;
+            padding: 0 4px;
+        }
+        .contact-button {
+            background: #a0a0a0;
+            color: #000000;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(160, 160, 160, 0.3);
+        }
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+        .footer-link:hover {
+            color: #a0a0a0;
+        }
+    </style>
+</head>
+<body class="bg-[#1a1a1a] font-sans">
+    <!-- Navbar -->
+    <nav class="bg-[#000000] shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-extrabold text-[#a0a0a0] tracking-tight">ShopTrend</a>
+            <div class="flex items-center space-x-8">
+                <a href="index.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium">Home</a>
+                <a href="about.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium">About Us</a>
+                <a href="categories.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium">Categories</a>
+                <a href="feedback.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium">Feedback</a>
+                <a href="contact.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium">Contact</a>
+                <a href="cart.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium relative">
+                    Cart
+                    <span id="cartCount" class="absolute -top-2 -right-2 bg-[#a0a0a0] text-[#000000] text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </a>
+                <a href="wishlist.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium relative">
+                    Wishlist
+                    <span id="wishlistCount" class="absolute -top-2 -right-2 bg-[#ff6b6b] text-[#000000] text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </a>
+            </div>
+            <div class="flex items-center space-x-6">
+                <div class="relative">
+                    <input type="text" id="searchBar" class="pl-10 pr-4 py-2 border border-[#a0a0a0] rounded-full focus:outline-none focus:ring-2 focus:ring-[#a0a0a0] bg-[#333333] text-[#d1d5db]" placeholder="Search products...">
+                    <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-[#a0a0a0]"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-[#2d2d2d]">
+        <div class="container mx-auto px-4">
+            <h2 class="section-heading text-center mb-10">Get in Touch</h2>
+            <div class="max-w-lg mx-auto contact-form-container">
+                <div id="contactForm">
+                    <div class="contact-input">
+                        <input type="text" id="contactName" placeholder=" " required>
+                        <label class="contact-label" for="contactName">Name</label>
+                    </div>
+                    <div class="contact-input">
+                        <input type="email" id="contactEmail" placeholder=" " required>
+                        <label class="contact-label" for="contactEmail">Email</label>
+                    </div>
+                    <div class="contact-textarea">
+                        <textarea id="contactMessage" rows="5" placeholder=" " required></textarea>
+                        <label class="contact-label" for="contactMessage">Message</label>
+                    </div>
+                    <button id="submitContact" class="contact-button w-full">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#000000] text-[#d1d5db] py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-[#ffffff]">ShopTrend</h3>
+                    <p class="text-[#d1d5db] mb-4">Your ultimate destination for premium fashion. Explore the latest trends and elevate your style with us.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-[#d1d5db] hover:text-[#a0a0a0]"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-[#d1d5db] hover:text-[#a0a0a0]"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-[#d1d5db] hover:text-[#a0a0a0]"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-[#ffffff]">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link text-[#d1d5db]">Home</a></li>
+                        <li><a href="about.html" class="footer-link text-[#d1d5db]">About Us</a></li>
+                        <li><a href="categories.html" class="footer-link text-[#d1d5db]">Categories</a></li>
+                        <li><a href="contact.html" class="footer-link text-[#d1d5db]">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-[#ffffff]">Contact Us</h3>
+                    <ul class="space-y-2 text-[#d1d5db]">
+                        <li><i class="fas fa-envelope mr-2"></i>support@shoptrend.com</li>
+                        <li><i class="fas fa-phone mr-2"></i>+91 123-456-7890</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>123 Fashion Street, Mumbai, India</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-[#ffffff]">Stay Updated</h3>
+                    <p class="text-[#d1d5db] mb-4">Subscribe to our newsletter for the latest updates and offers.</p>
+                    <div class="flex">
+                        <input type="email" id="newsletterEmail" class="w-full p-2 rounded-l-md bg-[#333333] text-[#d1d5db] border-none focus:outline-none focus:ring-2 focus:ring-[#a0a0a0]" placeholder="Your Email">
+                        <button id="subscribeBtn" class="bg-[#a0a0a0] text-[#000000] px-4 py-2 rounded-r-md hover:bg-[#b0b0b0] transition">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-[#a0a0a0] mt-8 pt-6 text-center">
+                <p class="text-[#d1d5db]">© 2025 ShopTrend. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="common.js"></script>
+    <script>
+        // Contact Form
+        document.getElementById('submitContact').addEventListener('click', () => {
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const message = document.getElementById('contactMessage').value;
+            if (name && email && message) {
+                alert('Message sent successfully!');
+                document.getElementById('contactName').value = '';
+                document.getElementById('contactEmail').value = '';
+                document.getElementById('contactMessage').value = '';
+            } else {
+                alert('Please fill out all fields.');
+            }
+        });
+
+        // Newsletter Subscription
+        document.getElementById('subscribeBtn').addEventListener('click', () => {
+            const email = document.getElementById('newsletterEmail').value;
+            if (email) {
+                alert('Thank you for subscribing!');
+                document.getElementById('newsletterEmail').value = '';
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        });
+
+        // Update cart and wishlist counts on page load
+        document.getElementById('cartCount').textContent = cart.length;
+        document.getElementById('wishlistCount').textContent = wishlist.length;
+    </script>
+</body>
+</html>

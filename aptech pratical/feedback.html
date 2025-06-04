@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - ShopTrend</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .feedback-section {
+            background: #2d2d2d;
+        }
+        .feedback-form-container {
+            background: #000000;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 6px 18px rgba(255, 255, 255, 0.05);
+        }
+        .feedback-input, .feedback-textarea {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        .feedback-input input, .feedback-textarea textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #a0a0a0;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #d1d5db;
+            background: #333333;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feedback-input input:focus, .feedback-textarea textarea:focus {
+            border-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(160, 160, 160, 0.1);
+            outline: none;
+        }
+        .feedback-label {
+            position: absolute;
+            top: 12px;
+            left: 16px;
+            font-size: 1rem;
+            color: #a0a0a0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        .feedback-input input:focus + .feedback-label,
+        .feedback-input input:not(:placeholder-shown) + .feedback-label,
+        .feedback-textarea textarea:focus + .feedback-label,
+        .feedback-textarea textarea:not(:placeholder-shown) + .feedback-label {
+            top: -10px;
+            left: 12px;
+            font-size: 0.85rem;
+            color: #ffffff;
+            background: #000000;
+            padding: 0 4px;
+        }
+        .feedback-button {
+            background: #a0a0a0;
+            color: #000000;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .feedback-button:hover {
+            background: #b0b0b0;
+            transform: translateY(-2px);
+        }
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+        .footer-link:hover {
+            color: #a0a0a0;
+        }
+    </style>
+</head>
+<body class="bg-[#1a1a1a] font-sans">
+    <!-- Navbar -->
+    <nav class="bg-[#000000] shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-extrabold text-[#a0a0a0] tracking-tight">ShopTrend</a>
+            <div class="flex items-center space-x-8">
+                <a href="index.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium">Home</a>
+                <a href="about.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium">About Us</a>
+                <a href="categories.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium">Categories</a>
+                <a href="feedback.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium">Feedback</a>
+                <a href="contact.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium">Contact</a>
+                <a href="cart.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium relative">
+                    Cart
+                    <span id="cartCount" class="absolute -top-2 -right-2 bg-[#a0a0a0] text-[#000000] text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </a>
+                <a href="wishlist.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium relative">
+                    Wishlist
+                    <span id="wishlistCount" class="absolute -top-2 -right-2 bg-[#ff6b6b] text-[#000000] text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </a>
+            </div>
+            <div class="flex items-center space-x-6">
+                <div class="relative">
+                    <input type="text" id="searchBar" class="pl-10 pr-4 py-2 border border-[#a0a0a0] rounded-full focus:outline-none focus:ring-2 focus:ring-[#a0a0a0] bg-[#333333] text-[#d1d5db]" placeholder="Search products...">
+                    <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-[#a0a0a0]"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Feedback Section -->
+    <section id="feedback" class="py-20 feedback-section">
+        <div class="container mx-auto px-4">
+            <h2 class="section-heading text-center mb-10">Your Feedback Matters</h2>
+            <div class="max-w-lg mx-auto feedback-form-container">
+                <div id="feedbackForm">
+                    <div class="feedback-input">
+                        <input type="text" id="name" placeholder=" " required>
+                        <label class="feedback-label" for="name">Name</label>
+                    </div>
+                    <div class="feedback-textarea">
+                        <textarea id="feedbackText" rows="5" placeholder=" " required></textarea>
+                        <label class="feedback-label" for="feedbackText">Your Feedback</label>
+                    </div>
+                    <button id="submitFeedback" class="feedback-button w-full">Submit Feedback</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#000000] text-[#d1d5db] py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-[#ffffff]">ShopTrend</h3>
+                    <p class="text-[#d1d5db] mb-4">Your ultimate destination for premium fashion. Explore the latest trends and elevate your style with us.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-[#d1d5db] hover:text-[#a0a0a0]"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-[#d1d5db] hover:text-[#a0a0a0]"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-[#d1d5db] hover:text-[#a0a0a0]"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-[#ffffff]">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link text-[#d1d5db]">Home</a></li>
+                        <li><a href="about.html" class="footer-link text-[#d1d5db]">About Us</a></li>
+                        <li><a href="categories.html" class="footer-link text-[#d1d5db]">Categories</a></li>
+                        <li><a href="contact.html" class="footer-link text-[#d1d5db]">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-[#ffffff]">Contact Us</h3>
+                    <ul class="space-y-2 text-[#d1d5db]">
+                        <li><i class="fas fa-envelope mr-2"></i>support@shoptrend.com</li>
+                        <li><i class="fas fa-phone mr-2"></i>+91 123-456-7890</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>123 Fashion Street, Mumbai, India</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-[#ffffff]">Stay Updated</h3>
+                    <p class="text-[#d1d5db] mb-4">Subscribe to our newsletter for the latest updates and offers.</p>
+                    <div class="flex">
+                        <input type="email" id="newsletterEmail" class="w-full p-2 rounded-l-md bg-[#333333] text-[#d1d5db] border-none focus:outline-none focus:ring-2 focus:ring-[#a0a0a0]" placeholder="Your Email">
+                        <button id="subscribeBtn" class="bg-[#a0a0a0] text-[#000000] px-4 py-2 rounded-r-md hover:bg-[#b0b0b0] transition">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-[#a0a0a0] mt-8 pt-6 text-center">
+                <p class="text-[#d1d5db]">© 2025 ShopTrend. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="common.js"></script>
+    <script>
+        // Feedback Form
+        document.getElementById('submitFeedback').addEventListener('click', () => {
+            const name = document.getElementById('name').value;
+            const feedback = document.getElementById('feedbackText').value;
+            if (name && feedback) {
+                alert('Thank you for your feedback!');
+                document.getElementById('name').value = '';
+                document.getElementById('feedbackText').value = '';
+            } else {
+                alert('Please fill out all fields.');
+            }
+        });
+
+        // Newsletter Subscription
+        document.getElementById('subscribeBtn').addEventListener('click', () => {
+            const email = document.getElementById('newsletterEmail').value;
+            if (email) {
+                alert('Thank you for subscribing!');
+                document.getElementById('newsletterEmail').value = '';
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        });
+
+        // Update cart and wishlist counts on page load
+        document.getElementById('cartCount').textContent = cart.length;
+        document.getElementById('wishlistCount').textContent = wishlist.length;
+    </script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist - ShopTrend</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .wishlist-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #a0a0a0;
+        }
+        .remove-button {
+            background: #ff6b6b;
+            color: #000000;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        .remove-button:hover {
+            background: #ff8787;
+        }
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+        .footer-link:hover {
+            color: #a0a0a0;
+        }
+    </style>
+</head>
+<body class="bg-[#1a1a1a] font-sans">
+    <!-- Navbar -->
+    <nav class="bg-[#000000] shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-extrabold text-[#a0a0a0] tracking-tight">ShopTrend</a>
+            <div class="flex items-center space-x-8">
+                <a href="index.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium">Home</a>
+                <a href="about.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium">About Us</a>
+                <a href="categories.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium">Categories</a>
+                <a href="feedback.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium">Feedback</a>
+                <a href="contact.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium">Contact</a>
+                <a href="cart.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium relative">
+                    Cart
+                    <span id="cartCount" class="absolute -top-2 -right-2 bg-[#a0a0a0] text-[#000000] text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </a>
+                <a href="wishlist.html" class="text-[#d1d5db] hover:text-[#a0a0a0] font-medium relative">
+                    Wishlist
+                    <span id="wishlistCount" class="absolute -top-2 -right-2 bg-[#ff6b6b] text-[#000000] text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </a>
+            </div>
+            <div class="flex items-center space-x-6">
+                <div class="relative">
+                    <input type="text" id="searchBar" class="pl-10 pr-4 py-2 border border-[#a0a0a0] rounded-full focus:outline-none focus:ring-2 focus:ring-[#a0a0a0] bg-[#333333] text-[#d1d5db]" placeholder="Search products...">
+                    <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-[#a0a0a0]"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Wishlist Section -->
+    <section id="wishlist" class="py-20 bg-[#2d2d2d">
+        <div class="container mx-auto px-4">
+            <h2 class="section-heading text-center mb-10">Your Wishlist</h2>
+            <div class="max-w-2xl mx-auto">
+                <aside id="wishlistContainer" class="text-[#d1d5db]"></aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#000000] text-[#d1d5db] py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-[#ffffff]">ShopTrend</h3>
+                    <p class="text-[#d1d5db] mb-4">Your ultimate destination for premium fashion. Explore the latest trends and elevate your style with us.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-[#d1d5db] hover:text-[#a0a0a0]"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-[#d1d5db] hover:text-[#a0a0a0]"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-[#d1d5db] hover:text-[#a0a0a0]"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-[#ffffff]">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link text-[#d1d5db]">Home</a></li>
+                        <li><a href="about.html" class="footer-link text-[#d1d5db]">About Us</a></li>
+                        <li><a href="categories.html" class="footer-link text-[#d1d5db]">Categories</a></li>
+                        <li><a href="contact.html" class="footer-link text-[#d1d5db]">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-[#ffffff]">Contact Us</h3>
+                    <ul class="space-y-2 text-[#d1d5db]">
+                        <li><i class="fas fa-envelope mr-2"></i>support@shoptrend.com</li>
+                        <li><i class="fas fa-phone mr-2"></i>+91 123-456-7890</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>123 Fashion Street, Mumbai, India</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-[#ffffff]">Stay Updated</h3>
+                    <p class="text-[#d1d5db] mb-4">Subscribe to our newsletter for the latest updates and offers.</p>
+                    <div class="flex">
+                        <input type="email" id="newsletterEmail" class="w-full p-2 rounded-l-md bg-[#333333] text-[#d1d5db] border-none focus:outline-none focus:ring-2 focus:ring-[#a0a0a0]" placeholder="Your Email">
+                        <button id="subscribeBtn" class="bg-[#a0a0a0] text-[#000000] px-4 py-2 rounded-r-md hover:bg-[#b0b0b0] transition">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-[#a0a0a0] mt-8 pt-6 text-center">
+                <p class="text-[#d1d5db]">© 2025 ShopTrend. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="common.js"></script>
+    <script>
+        const products = [
+            { name: "Classic Shirt", price: 999, category: "men", originalPrice: 1999, discount: "50% OFF", image: "https://images.unsplash.com/photo-1598033126046-2e5f8f587929?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Men Cotton Casual Shirt" },
+            { name: "Winter Jacket", price: 2499, category: "men", originalPrice: 3999, discount: "38% OFF", image: "https://images.unsplash.com/photo-1602810316693-3667c854239a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Warm Stylish Jacket" },
+            { name: "Denim Jeans", price: 1199, category: "men", originalPrice: 2499, discount: "52% OFF", image: "https://images.unsplash.com/photo-1608063615781-e2ef1c73d4c3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Men Regular Fit Jeans" },
+            { name: "Casual Trousers", price: 1499, category: "men", originalPrice: 2499, discount: "40% OFF", image: "https://images.unsplash.com/photo-1598558436277-2e5f8f587929?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Men Slim Fit Trousers" },
+            { name: "Formal Shirt", price: 1299, category: "men", originalPrice: 2199, discount: "41% OFF", image: "https://images.unsplash.com/photo-1598033126046-2e5f8f587929?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Men Cotton Formal Shirt" },
+            { name: "Leather Jacket", price: 3499, category: "men", originalPrice: 4999, discount: "30% OFF", image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Men Premium Leather Jacket" },
+            { name: "Floral Dress", price: 1499, category: "women", originalPrice: 2499, discount: "40% OFF", image: "https://images.unsplash.com/photo-1598546720078-8659873bc47d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Women Summer Dress" },
+            { name: "Silk Top", price: 1299, category: "women", originalPrice: 1999, discount: "35% OFF", image: "https://images.unsplash.com/photo-1584735174927-8b8e59666d79?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Women Elegant Top" },
+            { name: "Leather Skirt", price: 1799, category: "women", originalPrice: 2999, discount: "40% OFF", image: "https://images.unsplash.com/photo-1594633312681-863f1114425d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Women Stylish Skirt" },
+            { name: "Casual Blouse", price: 999, category: "women", originalPrice: 1999, discount: "50% OFF", image: "https://images.unsplash.com/photo-1598546720078-8659873bc47d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Women Casual Blouse" },
+            { name: "Denim Jacket", price: 2299, category: "women", originalPrice: 3499, discount: "34% OFF", image: "https://images.unsplash.com/photo-1608063615781-e2ef1c73d4c3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Women Denim Jacket" },
+            { name: "Evening Gown", price: 3999, category: "women", originalPrice: 5999, discount: "33% OFF", image: "https://images.unsplash.com/photo-1584735174927-8b8e59666d79?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Women Elegant Gown" },
+            { name: "Cartoon T-Shirt", price: 499, category: "kids", originalPrice: 999, discount: "50% OFF", image: "https://images.unsplash.com/photo-1622297124807-034de5ce051e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Kids Cotton T-Shirt" },
+            { name: "Kids Shorts", price: 399, category: "kids", originalPrice: 799, discount: "50% OFF", image: "https://images.unsplash.com/photo-1622297124807-034de5ce051e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Kids Casual Shorts" },
+            { name: "Kids Dress", price: 699, category: "kids", originalPrice: 1399, discount: "50% OFF", image: "https://images.unsplash.com/photo-1622297124807-034de5ce051e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Kids Party Dress" },
+            { name: "Kids Jacket", price: 799, category: "kids", originalPrice: 1599, discount: "50% OFF", image: "https://images.unsplash.com/photo-1622297124807-034de5ce051e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Kids Winter Jacket" },
+            { name: "Kids Jeans", price: 599, category: "kids", originalPrice: 1199, discount: "50% OFF", image: "https://images.unsplash.com/photo-1622297124807-034de5ce051e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Kids Denim Jeans" },
+            { name: "Kids Sweater", price: 899, category: "kids", originalPrice: 1799, discount: "50% OFF", image: "https://images.unsplash.com/photo-1622297124807-034de5ce051e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Kids Warm Sweater" },
+            { name: "Smart Watch", price: 1999, category: "accessories", originalPrice: 2999, discount: "33% OFF", image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Unisex Digital Watch" },
+            { name: "Leather Bag", price: 2499, category: "accessories", originalPrice: 3999, discount: "38% OFF", image: "https://images.unsplash.com/photo-1598546720078-8659873bc47d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Unisex Leather Bag" },
+            { name: "Necklace", price: 999, category: "accessories", originalPrice: 1999, discount: "50% OFF", image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Elegant Necklace" },
+            { name: "Sunglasses", price: 1499, category: "accessories", originalPrice: 2499, discount: "40% OFF", image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Stylish Sunglasses" },
+            { name: "Belt", price: 799, category: "accessories", originalPrice: 1299, discount: "38% OFF", image: "https://images.unsplash.com/photo-1606760227091-3dd44d7d1e11?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Leather Belt" },
+            { name: "Bracelet", price: 499, category: "accessories", originalPrice: 999, discount: "50% OFF", image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3", description: "Fashion Bracelet" }
+        ];
+
+        // Render Wishlist on page load
+        wishlist.forEach(productId => {
+            const product = products.find(p => `product${p.name.replace(/ /g, '')}` === productId);
+            if (product) {
+                const wishDiv = document.createElement('div');
+                wishDiv.setAttribute('id', `wish${productId}`);
+                wishDiv.className = 'wishlist-item';
+                wishDiv.innerHTML = `
+                    <span>${product.name}</span>
+                    <button class="remove-button" data-product-id="${productId}">Remove</button>
+                `;
+                document.getElementById('wishlistContainer').appendChild(wishDiv);
+            }
+        });
+        setupWishlistRemoveListeners();
+
+        // Newsletter Subscription
+        document.getElementById('subscribeBtn').addEventListener('click', () => {
+            const email = document.getElementById('newsletterEmail').value;
+            if (email) {
+                alert('Thank you for subscribing!');
+                document.getElementById('newsletterEmail').value = '';
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        });
+
+        // Update cart and wishlist counts on page load
+        document.getElementById('cartCount').textContent = cart.length;
+        document.getElementById('wishlistCount').textContent = wishlist.length;
+    </script>
+</body>
+</html>
